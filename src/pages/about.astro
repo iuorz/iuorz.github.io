@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../consts';
+---
+
+<BaseLayout title="关于">
+  <article>
+    <header class="article-head">
+      <h1>关于</h1>
+    </header>
+    <div class="prose">
+      <p>
+        这里是我的个人博客，用来记录技术笔记、阅读和一些想法。
+      </p>
+      <p>
+        站点用 <a href="https://astro.build" target="_blank" rel="noopener">Astro</a>
+        构建，托管在 GitHub Pages 上，全站静态，没有服务器和数据库。
+      </p>
+      <h2>联系</h2>
+      <p>
+        可以在这里写上你的邮箱、GitHub 主页或者其他联系方式。
+      </p>
+    </div>
+    <a class="back-link" href="/">← 返回首页</a>
+  </article>
+</BaseLayout>

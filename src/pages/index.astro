@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../consts';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const fmt = (d: Date) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+---
+
+<BaseLayout>
+  <section class="intro">
+    <h1>{SITE.title}</h1>
+    <p>{SITE.description}</p>
+  </section>
+
+  <ul class="post-list">
+    {
+      posts.map((post) => (
+        <li>
+          <a href={`/posts/${post.id}`}>
+            <div class="post-item-title">{post.data.title}</div>
+            <div class="post-item-meta">{fmt(post.data.pubDate)}</div>
+            <p class="post-item-desc">{post.data.description}</p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  {posts.length === 0 && <p style="color: var(--text-soft); margin-top: 44px;">还没有文章。</p>}
+</BaseLayout>
