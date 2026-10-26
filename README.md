@@ -1,5 +1,7 @@
 # IU 的博客
 
+> 项目位置：`E:\blog`　线上地址：https://iuorz.github.io
+
 基于 [Astro](https://astro.build) 的静态博客，部署目标是 GitHub Pages。
 
 ## 本地运行
