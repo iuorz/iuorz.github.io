@@ -43,34 +43,41 @@ tags: ['随笔']
 
 ## 部署到 GitHub Pages
 
-1. 在 GitHub 新建仓库，**仓库名必须是 `<你的用户名>.github.io`**，这样访问地址才是
-   `https://<你的用户名>.github.io`，不需要额外配 base 路径。
+本地仓库已初始化完成，`site` 已配为 `https://iuorz.github.io`，
+remote 已指向 `https://github.com/iuorz/iuorz.github.io.git`。
 
-2. 改 `astro.config.mjs` 里的 `site`：
+**只剩两步：**
 
-   ```js
-   site: 'https://<你的用户名>.github.io',
-   ```
+1. 在 GitHub 新建仓库，名字填 `iuorz.github.io`，选 **Public**，
+   **不要**勾选 Add a README / .gitignore / license（会造成首次 push 冲突）。
 
-3. 把项目推上去：
+2. 回来执行：
 
    ```bash
-   git init
-   git add .
-   git commit -m "init blog"
-   git branch -M main
-   git remote add origin https://github.com/<你的用户名>/<你的用户名>.github.io.git
    git push -u origin main
    ```
 
-4. 到仓库 **Settings → Pages → Build and deployment → Source**，选 **GitHub Actions**。
+3. 到仓库 **Settings → Pages → Build and deployment → Source**，选 **GitHub Actions**。
 
-5. 之后每次 `git push` 到 `main`，`.github/workflows/deploy.yml` 会自动构建并发布，
-   大概 1 分钟上线。
+之后每次 `git push` 到 `main`，`.github/workflows/deploy.yml` 会自动构建并发布，
+大概 1 分钟线上生效。
 
-> 如果仓库名不是 `<用户名>.github.io`（例如叫 `blog`），访问路径会变成
-> `https://<你的用户名>.github.io/blog/`，此时必须在 `astro.config.mjs` 里加 `base: '/blog'`，
-> 否则所有样式和链接都会 404。
+> 仓库名必须与用户名完全一致（`iuorz.github.io`）。如果改成别的名字（比如 `blog`），
+> 访问路径会变成 `https://iuorz.github.io/blog/`，此时必须在 `astro.config.mjs` 里加
+> `base: '/blog'`，否则所有样式和链接都会 404。
+
+## 提交身份
+
+本仓库使用 GitHub 隐私邮箱，不暴露真实邮箱：
+
+```bash
+git config user.name  "iuorz"
+git config user.email "269073377+iuorz@users.noreply.github.com"
+```
+
+这是仓库级配置，不影响其他项目。注意系统的全局配置里 `user.email` 是 `aa123456`，
+不是有效邮箱格式，其他项目往 GitHub 提交时建议改掉。
+
 
 ## 目录结构
 
